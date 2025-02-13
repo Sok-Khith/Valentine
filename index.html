@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Arial", sans-serif;
+      background-color: #ffe6e6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #ff4d4d;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4d4d;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      background-color: #ff1a1a;
+    }
+
+    #noBtn {
+      background-color: #cccccc;
+      color: black;
+    }
+
+    #noBtn:hover {
+      background-color: #999999;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #responseMessage {
+      font-size: 2em;
+      color: #ff4d4d;
+    }
+  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Happy Valentine's Day!</h1>
+      <p id="message">Will you be my Valentine?</p>
+      <div id="buttons">
+        <button id="yesBtn" onclick="handleYes()">Yes</button>
+        <button id="noBtn" onclick="handleNo()">No</button>
+      </div>
+      <div id="response" class="hidden">
+        <h2 id="responseMessage"></h2>
+      </div>
+    </div>
+
+    <script>
+      function handleYes() {
+        document.getElementById("message").style.display = "none";
+        document.getElementById("buttons").style.display = "none";
+        document.getElementById("responseMessage").textContent =
+          "Yay! I'm so happy! ❤️";
+        document.getElementById("response").classList.remove("hidden");
+      }
+
+      function handleNo() {
+        alert("Are you sure? 😢");
+        // Optional: You can make the "No" button move around or do something funny here.
+        const noButton = document.getElementById("noBtn");
+        noButton.style.position = "absolute";
+        noButton.style.top = Math.random() * window.innerHeight + "px";
+        noButton.style.left = Math.random() * window.innerWidth + "px";
+      }
+    </script>
+  </body>
+</html>
