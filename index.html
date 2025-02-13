@@ -74,44 +74,59 @@
     }
   </style>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Will You Be My Valentine?</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <h1>Happy Valentine's Day!</h1>
-        <p id="message">Will you be my Valentine?</p>
-        <div id="buttons">
-            <button id="yesBtn" onclick="submitAnswer('Yes')">Yes</button>
-            <button id="noBtn" onclick="submitAnswer('No')">No</button>
-        </div>
-        <div id="response" class="hidden">
-            <h2 id="responseMessage"></h2>
-        </div>
+      <h1>Happy Valentine's Day!</h1>
+      <p id="message">Will you be my Valentine?</p>
+      <div id="buttons">
+        <button id="yesBtn" onclick="submitAnswer('Yes')">Yes</button>
+        <button id="noBtn" onclick="handleNo()">No</button>
+      </div>
+      <div id="response" class="hidden">
+        <h2 id="responseMessage"></h2>
+      </div>
 
-        <!-- Hidden Form -->
-        <form id="answerForm" action="https://formspree.io/f/meoelvaq" method="POST" style="display: none;">
-            <input type="text" name="answer" id="answerInput">
-        </form>
+      <!-- Hidden Form -->
+      <form
+        id="answerForm"
+        action="https://formspree.io/f/meoelvaq"
+        method="POST"
+        style="display: none"
+      >
+        <input type="text" name="answer" id="answerInput" />
+      </form>
     </div>
 
-    <script>function submitAnswer(answer) {
+    <script>
+      function submitAnswer(answer) {
         // Set the value of the hidden input field
-        document.getElementById('answerInput').value = answer;
-    
-        // Submit the form
-        document.getElementById('answerForm').submit();
-    
-        // Show the response message
-        document.getElementById('message').style.display = 'none';
-        document.getElementById('buttons').style.display = 'none';
-        document.getElementById('responseMessage').textContent = answer === 'Yes' ? "Yay! I'm so happy! ❤️" : "Oh no... 😢";
-        document.getElementById('response').classList.remove('hidden');
-    }</script>
-</body>
-</html>
+        document.getElementById("answerInput").value = answer;
 
+        // Submit the form
+        document.getElementById("answerForm").submit();
+
+        // Show the response message
+        document.getElementById("message").style.display = "none";
+        document.getElementById("buttons").style.display = "none";
+        document.getElementById("responseMessage").textContent =
+          answer === "Yes" ? "Yay! I'm so happy! ❤️" : "Oh no... 😢";
+        document.getElementById("response").classList.remove("hidden");
+      }
+
+      function handleNo() {
+        alert("Are you sure? 😢");
+
+        // Move the "No" button around
+        const noButton = document.getElementById("noBtn");
+        noButton.style.position = "absolute";
+        noButton.style.top = Math.random() * (window.innerHeight - 50) + "px";
+        noButton.style.left = Math.random() * (window.innerWidth - 100) + "px";
+      }
+    </script>
   </body>
 </html>
